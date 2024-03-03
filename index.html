@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- tailwind and daisy ui link -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- css link -->
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <title>Phone Hunter</title>
+</head>
+
+<body class="container mx-auto p-4 my-8">
+    <!-- header start here -->
+    <header>
+        <section class="flex flex-col md:flex-row lg:flex-row justify-between">
+            <section>
+                <div>
+                    <button class="text-xl">PHONE HUNTER</button>
+                </div>
+            </section>
+            <!-- search section start -->
+            <section class="flex flex-row p-4 m-2 gap-4 bg-base-100">
+                <div>
+                    <input id="search-field" type="text" placeholder="search here...."
+                        class="input input-bordered w-full max-w-xs" />
+                </div>
+                <div>
+                    <button onclick="searchHandler()" class="btn btn-success">search</button>
+                </div>
+            </section>
+        </section>
+    </header>
+    <!-- header end here -->
+
+    <!-- main section start here -->
+    <main>
+        <!-- loading indicator -->
+        <div id="loader" class="hidden text-center">
+            <span class="loading loading-dots loading-lg"></span>
+        </div>
+        <!-- phone card start here -->
+        <section>
+            <div id="phone-container" class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <!-- append this from javascript for create this section dynamic -->
+            </div>
+        </section>
+        <!-- show all button -->
+        <section>
+            <button id="show-all-container" class="hidden m-8 btn btn-active btn-accent">Show all phones</button>
+        </section>
+    </main>
+    <!-- main section end here -->
+
+    <!-- footer section start here -->
+    <footer></footer>
+    <!-- footer section end here -->
+
+    <!-- scripts file -->
+    <script src="scripts/phone.js"></script>
+</body>
+
+</html>
