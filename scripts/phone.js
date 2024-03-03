@@ -1,6 +1,6 @@
 // api link---  https://openapi.programming-hero.com/api/phones?search=iphone
 
-const phoneData = async (searchText) => {
+const phoneData = async (searchText='iphone') => {
     const res = await fetch(`https://openapi.programming-hero.com/api/phones?search=${searchText}`);
     const data = await res.json();
     const phones = data.data;
@@ -32,7 +32,7 @@ const displayPhone = phones => {
     phones.forEach(phone => {
         console.log(phone);
         const phoneCard = document.createElement('div')
-        phoneCard.classList = `card p-4 rounded-xl bg-gray-100 shadow-xl`
+        phoneCard.classList = `card p-4 rounded-xl bg-gray-100 shadow-xl text-black`
         phoneCard.innerHTML = `
         <figure><img src="${phone.image}" alt="Shoes" />
         </figure>
@@ -41,13 +41,31 @@ const displayPhone = phones => {
                     <p>${phone.brand}</p>
                     <p> Price: ${phone.price}</p>
                     <div class="card-actions justify-end">
-                        <button class="btn btn-primary">Buy Now</button>
+                        <button onclick="showDetails('${phone.slug}')" class="btn btn-primary">Show Details</button>
                     </div>
                 </div>
         `
         phoneContainer.appendChild(phoneCard);
     });
     seeLoader(false);
+}
+
+// show all phones---
+const showDetails =async (id) => {
+    // console.log(id);
+    const res = await fetch(`https://openapi.programming-hero.com/api/phone/${id}`);
+    const singleData =await res.json();
+    const modalShow = singleData.data
+    displayModal(modalShow)
+}
+
+const displayModal = (modalShow) =>{
+    console.log(modalShow);
+    
+
+
+
+    show_details_modal.showModal()
 }
 
 const searchHandler = () => {
@@ -69,4 +87,4 @@ const seeLoader = (isLoading) => {
     }
 }
 
-// phoneData();
+phoneData();
